@@ -9,4 +9,11 @@ Method* ClassType::getMethod(const std::string& name) const {
   return module_->find_method(name);
 }
 
+std::vector<Method*> ClassType::methods() const {
+  std::vector<Method*> ret;
+  for (const auto& pr : module_->get_methods()) {
+    ret.push_back(pr.get());
+  }
+  return ret;
+}
 } // namespace c10
